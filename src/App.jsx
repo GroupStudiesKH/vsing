@@ -370,13 +370,13 @@ const GlobalReach = () => {
           <h3 className="text-2xl font-bold text-white mb-8">演唱會合作夥伴</h3>
           <div className="flex flex-wrap md:flex-nowrap justify-center gap-8 md:gap-12 items-center max-w-6xl mx-auto">
             <div className="w-full md:w-1/3 p-4 transition-transform duration-300 hover:scale-105">
-              <img src={sponserAsmeir} alt="A-Mei Concert" className="w-full h-auto object-contain rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
+              <img src={sponserAsmeir} alt="A-Mei Concert" className="w-full h-64 md:h-50 object-cover rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
             </div>
             <div className="w-full md:w-1/3 p-4 transition-transform duration-300 hover:scale-105">
-              <img src={sponserPowerTrain} alt="Power Station Concert" className="w-full h-auto object-contain rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
+              <img src={sponserPowerTrain} alt="Power Station Concert" className="w-full h-64 md:h-50 object-cover rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
             </div>
             <div className="w-full md:w-1/3 p-4 transition-transform duration-300 hover:scale-105">
-              <img src={sponserTsai} alt="Priscilla Abby Concert" className="w-full h-auto object-contain rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
+              <img src={sponserTsai} alt="Priscilla Abby Concert" className="w-full h-64 md:h-50 object-cover rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
             </div>
           </div>
         </div>
