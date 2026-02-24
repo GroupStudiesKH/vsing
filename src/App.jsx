@@ -460,7 +460,7 @@ const Contact = () => {
 
     try {
       // Google Apps Script Web App URL
-      const scriptURL = "https://script.google.com/macros/s/AKfycbxAWR_iEQEfb7XO80_rpNk2ADKNFDQij7YcYxEzItBFqWNL7LcbM-z5VGJQKU04gHQO/exec";
+      const scriptURL = "https://script.google.com/macros/s/AKfycbxte9zNAKb22T_fFpN4lCgIlG84sQcaJVSP77fVAeTxwZpcY-As8OauYJZUe0fMwhY5/exec";
 
       await fetch(scriptURL, {
         method: "POST",
