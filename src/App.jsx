@@ -389,46 +389,184 @@ const HowToStart = () => {
   return (
     <section id="start" className="py-20 bg-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-3xl p-8 md:p-12 border border-purple-500/20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">導入方案與流程</h2>
-            <p className="text-xl text-purple-300">限時優惠：導入零成本</p>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">台灣專屬・模組化導入方案</h2>
+          <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full"></div>
+          <p className="mt-4 text-xl text-gray-400">門檻更低、選擇更自由，打造最適合您的娛樂場域</p>
+        </div>
+
+        {/* 1. 方案背景與目的 & 2. 系統租賃與分潤機制 */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-zinc-800 to-black p-8 rounded-2xl border border-zinc-700"
+          >
+            <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <Globe className="text-purple-500" />
+              方案特色
+            </h3>
+            <p className="text-gray-300 leading-relaxed mb-6">
+              專為台灣市場打造的彈性導入方案，打破傳統套餐限制，將原有的馬來西亞模式轉化為更具彈性的「選配模組化」制度。
+              透過降低系統入門門檻與採購滿額激勵，讓各類餐飲、娛樂場所都能輕鬆導入 VSING 系統，創造最大收益。
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="bg-purple-900/30 p-4 rounded-xl border border-purple-500/30 flex-1 text-center">
+                <p className="text-gray-400 text-sm mb-1">系統月租費</p>
+                <p className="text-2xl font-bold text-white">NT$ 4,000<span className="text-sm font-normal text-gray-400"> / 月</span></p>
+                <p className="text-xs text-gray-500 mt-1">合約期：1年</p>
+              </div>
+              <div className="bg-green-900/30 p-4 rounded-xl border border-green-500/30 flex-1 text-center">
+                <p className="text-gray-400 text-sm mb-1">合作店家分潤</p>
+                <p className="text-2xl font-bold text-green-400">20%</p>
+                <p className="text-xs text-gray-500 mt-1">系統營收共享</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-zinc-800/50 p-8 rounded-2xl border border-zinc-700"
+          >
+            <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <Gift className="text-pink-500" />
+              硬體採購滿額回饋
+            </h3>
+            <p className="text-gray-400 mb-6">為了鼓勵店家建置更完整的娛樂設備，特設「採購折抵租金」回饋方案：</p>
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between bg-zinc-900 p-4 rounded-xl border border-zinc-800">
+                <div>
+                  <p className="text-purple-400 font-bold">入門推廣</p>
+                  <p className="text-sm text-gray-400">採購滿 NT$ 100,000</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-white font-bold">贈送 3 個月</p>
+                  <p className="text-xs text-green-400">省下 NT$ 12,000</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between bg-zinc-900 p-4 rounded-xl border border-zinc-800">
+                <div>
+                  <p className="text-purple-400 font-bold">專業進階</p>
+                  <p className="text-sm text-gray-400">採購滿 NT$ 250,000</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-white font-bold">贈送 6 個月</p>
+                  <p className="text-xs text-green-400">省下 NT$ 24,000</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between bg-gradient-to-r from-purple-900/40 to-pink-900/40 p-4 rounded-xl border border-purple-500/30">
+                <div>
+                  <p className="text-pink-400 font-bold">旗艦全面</p>
+                  <p className="text-sm text-gray-300">採購滿 NT$ 400,000</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-white font-bold">贈送 12 個月</p>
+                  <p className="text-xs text-green-400">省下 NT$ 48,000</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* 3. 硬體設備選配方案 */}
+        <div className="bg-black/40 rounded-3xl p-8 border border-white/10">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl font-bold text-white mb-2">硬體設備選配方案 (Modular Selection)</h3>
+            <p className="text-gray-400">由店家依現場環境自由挑選，打造獨一無二的氛圍</p>
+            <div className="flex justify-center gap-6 mt-4 text-sm">
+              <span className="flex items-center gap-1"><span className="text-purple-500">◈</span> 配合系統必選</span>
+              <span className="flex items-center gap-1"><span className="text-green-500">◉</span> 基本建議套組</span>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 mb-12">
-            <div className="bg-black/50 p-6 rounded-xl border border-white/10">
-              <h3 className="text-xl font-bold text-white mb-4">限時優惠方案</h3>
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <Star className="text-yellow-500" size={16} /> 六個月免租用費
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Column 1: Core System */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">核心基礎設備</h4>
+              <ul className="space-y-3">
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-purple-500">◈</span> 電腦主機 (VSING PC)</span>
+                  <span className="font-mono text-white">$59,510</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Star className="text-yellow-500" size={16} /> 初期免系統費
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 電腦螢幕</span>
+                  <span className="font-mono text-white">$3,299</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Star className="text-yellow-500" size={16} /> 提供免費器材
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 鍵盤滑鼠</span>
+                  <span className="font-mono text-white">$440</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Star className="text-yellow-500" size={16} /> 無風險測試期
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 提詞機螢幕</span>
+                  <span className="font-mono text-white">$6,160</span>
                 </li>
               </ul>
             </div>
-            <div className="bg-black/50 p-6 rounded-xl border border-white/10">
-              <h3 className="text-xl font-bold text-white mb-4">標準加盟資訊</h3>
-              <p className="text-gray-300 mb-4">加盟金 <span className="text-2xl font-bold text-white">NT$ 350,000</span></p>
-              <p className="text-sm text-gray-400">包含：系統電腦、投影設備、音響控制等現場標準硬體配置。</p>
+
+            {/* Column 2: Lighting & Effects */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">燈光與特效</h4>
+              <ul className="space-y-3">
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 燈光控制器</span>
+                  <span className="font-mono text-white">$6,500</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 爆閃燈</span>
+                  <span className="font-mono text-white">$3,850</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span> </span> 燈鉤</span>
+                  <span className="font-mono text-white">$330</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 煙霧機</span>
+                  <span className="font-mono text-white">$20,800</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span> </span> 無線麥克風組</span>
+                  <span className="font-mono text-white">$19,800</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Visual Output */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">視覺輸出設備</h4>
+              <ul className="space-y-3">
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機</span>
+                  <span className="font-mono text-white">$91,850</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機吊架</span>
+                  <span className="font-mono text-white">$4,950</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影布幕</span>
+                  <span className="font-mono text-white">$8,800</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300">
+                  <span className="flex items-center gap-2"><span> </span> HDMI線組</span>
+                  <span className="font-mono text-white">$3,608</span>
+                </li>
+                <li className="flex justify-between items-center text-gray-300 mt-4 pt-2 border-t border-white/5">
+                  <span className="flex items-center gap-2 text-purple-400">LED 大螢幕 / 燈條</span>
+                  <span className="text-sm text-gray-500">客製化報價</span>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['申請聯絡', '專業安裝', '教育訓練', '正式營運'].map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4 border border-white/20">
-                  {index + 1}
-                </div>
-                <p className="text-white font-medium">{step}</p>
-              </div>
-            ))}
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500">
+              * 價格僅供參考，實際報價依現場需求與施工難度而定。<br />
+              * 建議選配項目可視店內既有設備及需求刪減。
+            </p>
           </div>
         </div>
       </div>
