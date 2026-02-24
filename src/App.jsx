@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, Star, Gift, BarChart3, ShieldCheck } from 'lucide-react';
+import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, Star, Gift, BarChart3, ShieldCheck, Check } from 'lucide-react';
 
 // Import images
 import logo from './assets/img/vsing_logo.webp';
@@ -437,8 +437,57 @@ const HowToStart = () => {
 };
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    shopType: '酒吧 / 餐酒館',
+    location: ''
+  });
+  const [showModal, setShowModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Google Apps Script Web App URL
+      const scriptURL = "https://script.google.com/macros/s/AKfycbxAWR_iEQEfb7XO80_rpNk2ADKNFDQij7YcYxEzItBFqWNL7LcbM-z5VGJQKU04gHQO/exec";
+
+      await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(formData),
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      });
+
+      setShowModal(true);
+      setFormData({
+        name: '',
+        phone: '',
+        shopType: '酒吧 / 餐酒館',
+        location: ''
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("傳送失敗，請稍後再試");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <section id="contact" className="py-20 bg-black">
+    <section id="contact" className="py-20 bg-black relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-16">
           <div>
@@ -479,35 +528,91 @@ const Contact = () => {
 
           <div className="bg-zinc-900 p-8 rounded-2xl border border-zinc-800">
             <h3 className="text-2xl font-bold text-white mb-6">立即預約諮詢</h3>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-1">姓名</label>
-                <input type="text" className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="您的姓名" />
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  placeholder="您的姓名"
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-1">聯絡電話</label>
-                <input type="tel" className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="您的電話" />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  placeholder="您的電話"
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-1">店面類型</label>
-                <select className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors">
-                  <option>酒吧 / 餐酒館</option>
-                  <option>KTV / 娛樂場所</option>
-                  <option>餐廳</option>
-                  <option>其他</option>
+                <select
+                  name="shopType"
+                  value={formData.shopType}
+                  onChange={handleChange}
+                  className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                >
+                  <option value="酒吧 / 餐酒館">酒吧 / 餐酒館</option>
+                  <option value="KTV / 娛樂場所">KTV / 娛樂場所</option>
+                  <option value="餐廳">餐廳</option>
+                  <option value="其他">其他</option>
                 </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-1">所在地區</label>
-                <input type="text" className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="例如：台北市信義區" />
+                <input
+                  type="text"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  placeholder="例如：台北市信義區"
+                />
               </div>
-              <button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all mt-4">
-                送出諮詢
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all mt-4 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+              >
+                {isSubmitting ? '傳送中...' : '送出諮詢'}
               </button>
             </form>
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setShowModal(false)}></div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-2xl relative z-10 max-w-sm w-full text-center"
+          >
+            <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Check size={32} className="text-green-500" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">訊息已送出！</h3>
+            <p className="text-gray-400 mb-6">我們已收到您的諮詢，專人將盡快與您聯繫。</p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-8 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all"
+            >
+              確定
+            </button>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
