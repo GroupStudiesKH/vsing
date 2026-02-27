@@ -5,21 +5,11 @@ import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, St
 // Import images
 import logo from './assets/img/vsing_logo.webp';
 import bg1 from './assets/img/bg1.webp';
-import app1 from './assets/img/app1.webp';
-import app2 from './assets/img/app2.webp';
-import illustration1 from './assets/img/illustration1.webp';
 import illustration2 from './assets/img/illustration2.webp';
-import profitStage1 from './assets/img/profit_stage1.webp';
-import profitStage2 from './assets/img/profit_stage2.webp';
 import revenue from './assets/img/revenue.webp';
 import globalVision from './assets/img/vsing_global_vision.webp';
-import sponserAsmeir from './assets/img/sponser_asmeir.webp';
-import sponserPowerTrain from './assets/img/sponser_power_train.webp';
-import sponserTsai from './assets/img/sponser_tsai.webp';
 import karakaraCase1 from './assets/img/karakara_case1.webp';
 import karakaraCase3 from './assets/img/karakara_case3.webp';
-import karakaraCase4 from './assets/img/karakara_case4.webp';
-import girlSinger from './assets/img/girl_singer.webp';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -359,24 +349,9 @@ const GlobalReach = () => {
           <img src={globalVision} alt="Global Map" className="w-full opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center bg-black/70 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
-              <p className="text-4xl font-bold text-white mb-2">30+</p>
+              <p className="text-4xl font-bold text-white mb-2">100+</p>
               <p className="text-gray-400">全球客戶</p>
               <p className="text-sm text-gray-500 mt-2">馬來西亞 • 新加坡 • 香港 • 台灣 • 泰國</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mb-10">
-          <h3 className="text-2xl font-bold text-white mb-8">演唱會合作夥伴</h3>
-          <div className="flex flex-wrap md:flex-nowrap justify-center gap-8 md:gap-12 items-center max-w-6xl mx-auto">
-            <div className="w-full md:w-1/3 p-4 transition-transform duration-300 hover:scale-105">
-              <img src={sponserAsmeir} alt="A-Mei Concert" className="w-full h-64 md:h-50 object-cover rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
-            </div>
-            <div className="w-full md:w-1/3 p-4 transition-transform duration-300 hover:scale-105">
-              <img src={sponserPowerTrain} alt="Power Station Concert" className="w-full h-64 md:h-50 object-cover rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
-            </div>
-            <div className="w-full md:w-1/3 p-4 transition-transform duration-300 hover:scale-105">
-              <img src={sponserTsai} alt="Priscilla Abby Concert" className="w-full h-64 md:h-50 object-cover rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity" />
             </div>
           </div>
         </div>
@@ -636,7 +611,7 @@ const Contact = () => {
                 <div className="flex items-start gap-4">
                   <MapPin className="text-purple-500 mt-1" size={24} />
                   <div>
-                    <p className="font-bold text-white">KARA KARA</p>
+                    <p className="font-bold text-white">ONE KARA</p>
                     <p className="text-gray-400">台北信義 ATT 4 FUN 10F</p>
                     <p className="text-gray-500 text-sm mt-1">台北市信義區松壽路12號10樓</p>
                   </div>
@@ -644,8 +619,8 @@ const Contact = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <img src={karakaraCase1} alt="KARA KARA" className="rounded-lg opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={karakaraCase3} alt="KARA KARA" className="rounded-lg opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={karakaraCase1} alt="ONE KARA" className="rounded-lg opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={karakaraCase3} alt="ONE KARA" className="rounded-lg opacity-80 hover:opacity-100 transition-opacity" />
               </div>
 
               <div>
