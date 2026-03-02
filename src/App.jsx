@@ -200,7 +200,7 @@ const Hero = () => {
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-zinc-900">
+    <section id="about" className="py-20 bg-zinc-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">什麼是 VSING？</h2>
@@ -300,7 +300,7 @@ const Advantages = () => {
   ];
 
   return (
-    <section id="advantages" className="py-20 bg-black">
+    <section id="advantages" className="py-20 bg-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">為什麼選擇 VSING？</h2>
@@ -330,7 +330,7 @@ const Advantages = () => {
 
 const ProfitModel = () => {
   return (
-    <section id="profit" className="py-20 bg-zinc-900">
+    <section id="profit" className="py-20 bg-zinc-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">商業獲利模式</h2>
