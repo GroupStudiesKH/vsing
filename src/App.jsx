@@ -128,7 +128,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed font-medium"
         >
-          VSING 是一套將現場表演變現的互動系統，<br />為您的場域注入全新生命力。
+          VSING 是一套將現場變現的互動系統，<br />為您的營業場域注入全新生命力。
         </motion.p>
 
         <motion.div
