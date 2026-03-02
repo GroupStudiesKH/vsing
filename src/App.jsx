@@ -106,20 +106,10 @@ const Hero = () => {
           transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
           className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tight"
         >
-          <div className="mb-4 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">零成本開店</div>
-          <motion.div
-            animate={{
-              textShadow: [
-                "0 0 10px #a855f7",
-                "0 0 20px #a855f7",
-                "0 0 10px #a855f7"
-              ]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 pb-2"
-          >
+          <div className="mb-4">零成本開店</div>
+          <div className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 pb-2">
             營收翻倍的武器
-          </motion.div>
+          </div>
         </motion.h1>
 
         <motion.p
