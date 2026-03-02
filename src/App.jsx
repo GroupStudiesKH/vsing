@@ -40,7 +40,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="#contact-form"
                 className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-purple-500/30"
               >
                 立即加入
@@ -197,7 +197,7 @@ const Hero = () => {
         >
           <div className="flex flex-col sm:flex-row gap-6 justify-center w-full max-w-md sm:max-w-none mb-8">
             <a
-              href="#contact"
+              href="#contact-form"
               className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-full text-xl font-black hover:from-purple-500 hover:to-pink-500 transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] flex items-center justify-center gap-3 transform hover:-translate-y-1"
             >
               <Play className="fill-current w-6 h-6 group-hover:scale-110 transition-transform" />
@@ -751,7 +751,7 @@ const Contact = () => {
                 <img src={karakaraCase3} alt="ONE KARA" className="rounded-lg opacity-80 hover:opacity-100 transition-opacity" />
               </div>
 
-              <div>
+              <div id="contact-form">
                 <h3 className="text-xl font-bold text-white mb-4">聯繫資訊</h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-gray-300">
