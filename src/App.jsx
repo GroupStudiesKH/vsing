@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, Star, Gift, BarChart3, ShieldCheck, Check } from 'lucide-react';
+import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, Star, Gift, BarChart3, ShieldCheck, Check, ChevronDown, ChevronUp } from 'lucide-react';
 
 // Import images
 import logo from './assets/img/vsing_logo.webp';
@@ -104,12 +104,20 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-bold text-white mb-10"
+          className="text-4xl md:text-6xl font-bold text-white mb-10 relative z-10 leading-tight"
         >
-          <div className="mb-6">打造你的高光時刻</div>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            讓舞台發光，也讓營收提高！
-          </span>
+          <motion.div
+            animate={{
+              boxShadow: ["0 0 20px rgba(147,51,234,0.3)", "0 0 60px rgba(147,51,234,0.6)", "0 0 20px rgba(147,51,234,0.3)"],
+              borderColor: ["rgba(255,255,255,0.1)", "rgba(168,85,247,0.5)", "rgba(255,255,255,0.1)"]
+            }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-block bg-black/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/10"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 drop-shadow-sm">
+              零成本開店、<br className="md:hidden" />營收翻倍的武器
+            </span>
+          </motion.div>
         </motion.h1>
 
         <motion.p
@@ -361,6 +369,8 @@ const GlobalReach = () => {
 };
 
 const HowToStart = () => {
+  const [isPriceListOpen, setIsPriceListOpen] = useState(false);
+
   return (
     <section id="start" className="py-20 bg-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -449,100 +459,117 @@ const HowToStart = () => {
 
         {/* 3. 硬體設備選配方案 */}
         <div className="bg-black/40 rounded-3xl p-8 border border-white/10">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-white mb-2">硬體設備選配方案 (Modular Selection)</h3>
-            <p className="text-gray-400">由店家依現場環境自由挑選，打造獨一無二的氛圍</p>
-            <div className="flex justify-center gap-6 mt-4 text-sm">
-              <span className="flex items-center gap-1"><span className="text-purple-500">◈</span> 配合系統必選</span>
-              <span className="flex items-center gap-1"><span className="text-green-500">◉</span> 基本建議套組</span>
-            </div>
+          <div
+            className="text-center cursor-pointer group"
+            onClick={() => setIsPriceListOpen(!isPriceListOpen)}
+          >
+            <h3 className="text-2xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+              硬體設備選配方案 (Modular Selection)
+              {isPriceListOpen ? <ChevronUp className="text-purple-500" /> : <ChevronDown className="text-purple-500" />}
+            </h3>
+            <p className="text-gray-400 group-hover:text-white transition-colors">由店家依現場環境自由挑選，打造獨一無二的氛圍</p>
+            <p className="text-sm text-purple-400 mt-2">{isPriceListOpen ? '收合價目表' : '展開完整價目表'}</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Column 1: Core System */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">核心基礎設備</h4>
-              <ul className="space-y-3">
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-purple-500">◈</span> 電腦主機 (VSING PC)</span>
-                  <span className="font-mono text-white">$59,510</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 電腦螢幕</span>
-                  <span className="font-mono text-white">$3,299</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 鍵盤滑鼠</span>
-                  <span className="font-mono text-white">$440</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 提詞機螢幕</span>
-                  <span className="font-mono text-white">$6,160</span>
-                </li>
-              </ul>
-            </div>
+          <motion.div
+            initial={false}
+            animate={{ height: isPriceListOpen ? 'auto' : 0, opacity: isPriceListOpen ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="pt-8 border-t border-white/10 mt-6">
+              <div className="flex justify-center gap-6 mb-8 text-sm">
+                <span className="flex items-center gap-1"><span className="text-purple-500">◈</span> 配合系統必選</span>
+                <span className="flex items-center gap-1"><span className="text-green-500">◉</span> 基本建議套組</span>
+              </div>
 
-            {/* Column 2: Lighting & Effects */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">燈光與特效</h4>
-              <ul className="space-y-3">
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 燈光控制器</span>
-                  <span className="font-mono text-white">$6,500</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 爆閃燈</span>
-                  <span className="font-mono text-white">$3,850</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span> </span> 燈鉤</span>
-                  <span className="font-mono text-white">$330</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 煙霧機</span>
-                  <span className="font-mono text-white">$20,800</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span> </span> 無線麥克風組</span>
-                  <span className="font-mono text-white">$19,800</span>
-                </li>
-              </ul>
-            </div>
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* Column 1: Core System */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">核心基礎設備</h4>
+                  <ul className="space-y-3">
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-purple-500">◈</span> 電腦主機 (VSING PC)</span>
+                      <span className="font-mono text-white">$59,510</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 電腦螢幕</span>
+                      <span className="font-mono text-white">$3,299</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 鍵盤滑鼠</span>
+                      <span className="font-mono text-white">$440</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 提詞機螢幕</span>
+                      <span className="font-mono text-white">$6,160</span>
+                    </li>
+                  </ul>
+                </div>
 
-            {/* Column 3: Visual Output */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">視覺輸出設備</h4>
-              <ul className="space-y-3">
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機</span>
-                  <span className="font-mono text-white">$91,850</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機吊架</span>
-                  <span className="font-mono text-white">$4,950</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影布幕</span>
-                  <span className="font-mono text-white">$8,800</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span> </span> HDMI線組</span>
-                  <span className="font-mono text-white">$3,608</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300 mt-4 pt-2 border-t border-white/5">
-                  <span className="flex items-center gap-2 text-purple-400">LED 大螢幕 / 燈條</span>
-                  <span className="text-sm text-gray-500">客製化報價</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+                {/* Column 2: Lighting & Effects */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">燈光與特效</h4>
+                  <ul className="space-y-3">
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 燈光控制器</span>
+                      <span className="font-mono text-white">$6,500</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 爆閃燈</span>
+                      <span className="font-mono text-white">$3,850</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span> </span> 燈鉤</span>
+                      <span className="font-mono text-white">$330</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 煙霧機</span>
+                      <span className="font-mono text-white">$20,800</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span> </span> 無線麥克風組</span>
+                      <span className="font-mono text-white">$19,800</span>
+                    </li>
+                  </ul>
+                </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-500">
-              * 價格僅供參考，實際報價依現場需求與施工難度而定。<br />
-              * 建議選配項目可視店內既有設備及需求刪減。
-            </p>
-          </div>
+                {/* Column 3: Visual Output */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">視覺輸出設備</h4>
+                  <ul className="space-y-3">
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機</span>
+                      <span className="font-mono text-white">$91,850</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機吊架</span>
+                      <span className="font-mono text-white">$4,950</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影布幕</span>
+                      <span className="font-mono text-white">$8,800</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span> </span> HDMI線組</span>
+                      <span className="font-mono text-white">$3,608</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300 mt-4 pt-2 border-t border-white/5">
+                      <span className="flex items-center gap-2 text-purple-400">LED 大螢幕 / 燈條</span>
+                      <span className="text-sm text-gray-500">客製化報價</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-sm text-gray-500">
+                  * 價格僅供參考，實際報價依現場需求與施工難度而定。<br />
+                  * 建議選配項目可視店內既有設備及需求刪減。
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
