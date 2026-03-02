@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, Star, Gift, BarChart3, ShieldCheck, Check } from 'lucide-react';
+import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, Star, Gift, BarChart3, ShieldCheck, Check, Zap, ChevronDown, ChevronUp } from 'lucide-react';
 
 // Import images
 import logo from './assets/img/vsing_logo.webp';
@@ -371,6 +371,8 @@ const GlobalReach = () => {
 };
 
 const HowToStart = () => {
+  const [isHardwareExpanded, setIsHardwareExpanded] = useState(false);
+
   return (
     <section id="start" className="py-20 bg-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -394,14 +396,28 @@ const HowToStart = () => {
             </h3>
 
             <div className="space-y-6">
-              <div className="bg-zinc-900/50 p-4 rounded-xl border-l-4 border-purple-500 hover:bg-zinc-900 transition-colors">
-                <h4 className="text-lg font-bold text-white mb-2">已有設備？零硬體成本！</h4>
-                <p className="text-gray-400">若您店內已有適合的電腦與影音設備，完全無需購買新硬體。只需支付軟體月租，即可立即導入 VSING 系統。</p>
+              <div className="bg-zinc-900/50 p-6 rounded-xl border border-white/5 hover:bg-zinc-800 transition-all flex gap-4 items-start group">
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-500 group-hover:scale-110 transition-transform">
+                    <Check size={20} />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">已有設備？零硬體成本！</h4>
+                  <p className="text-gray-400">若您店內已有適合的電腦與影音設備，完全無需購買新硬體。只需支付軟體月租，即可立即導入 VSING 系統。</p>
+                </div>
               </div>
 
-              <div className="bg-zinc-900/50 p-4 rounded-xl border-l-4 border-green-500 hover:bg-zinc-900 transition-colors">
-                <h4 className="text-lg font-bold text-white mb-2">需要設備？實惠選配！</h4>
-                <p className="text-gray-400">我們提供優於市價的專業特效設備供您選配。不強迫購買，旨在協助您以最划算的預算升級場域氛圍。</p>
+              <div className="bg-zinc-900/50 p-6 rounded-xl border border-white/5 hover:bg-zinc-800 transition-all flex gap-4 items-start group">
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+                    <Zap size={20} />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">需要設備？實惠選配！</h4>
+                  <p className="text-gray-400">我們提供優於市價的專業特效設備供您選配。不強迫購買，旨在協助您以最划算的預算升級場域氛圍。</p>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -435,7 +451,7 @@ const HowToStart = () => {
         </div>
 
         {/* 2. 硬體設備選配方案 (包含滿額回饋) */}
-        <div className="bg-black/40 rounded-3xl p-8 border border-white/10 relative overflow-hidden">
+        <div className="bg-black/40 rounded-3xl p-8 border border-white/10 relative overflow-hidden transition-all duration-500">
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
           <div className="text-center mb-10 relative z-10">
@@ -447,9 +463,9 @@ const HowToStart = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 relative z-10 mb-12">
-            {/* Column 1: Core System */}
-            <div className="space-y-4">
+          <div className={`grid gap-8 ${isHardwareExpanded ? 'md:grid-cols-3' : 'md:grid-cols-1 max-w-2xl mx-auto'} relative z-10 mb-8 transition-all duration-500`}>
+            {/* Column 1: Core System (Always visible) */}
+            <motion.div layout className="space-y-4">
               <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">核心基礎設備</h4>
               <ul className="space-y-3">
                 <li className="flex justify-between items-center text-gray-300">
@@ -469,61 +485,88 @@ const HowToStart = () => {
                   <span className="font-mono text-white">$6,160</span>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
-            {/* Column 2: Lighting & Effects */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">燈光與特效</h4>
-              <ul className="space-y-3">
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 燈光控制器</span>
-                  <span className="font-mono text-white">$6,500</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 爆閃燈</span>
-                  <span className="font-mono text-white">$3,850</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span> </span> 燈鉤</span>
-                  <span className="font-mono text-white">$330</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 煙霧機</span>
-                  <span className="font-mono text-white">$20,800</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span> </span> 無線麥克風組</span>
-                  <span className="font-mono text-white">$19,800</span>
-                </li>
-              </ul>
-            </div>
+            {/* Column 2 & 3: Collapsible */}
+            {isHardwareExpanded && (
+              <>
+                {/* Column 2: Lighting & Effects */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4"
+                >
+                  <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">燈光與特效</h4>
+                  <ul className="space-y-3">
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 燈光控制器</span>
+                      <span className="font-mono text-white">$6,500</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 爆閃燈</span>
+                      <span className="font-mono text-white">$3,850</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span> </span> 燈鉤</span>
+                      <span className="font-mono text-white">$330</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 煙霧機</span>
+                      <span className="font-mono text-white">$20,800</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span> </span> 無線麥克風組</span>
+                      <span className="font-mono text-white">$19,800</span>
+                    </li>
+                  </ul>
+                </motion.div>
 
-            {/* Column 3: Visual Output */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">視覺輸出設備</h4>
-              <ul className="space-y-3">
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機</span>
-                  <span className="font-mono text-white">$91,850</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機吊架</span>
-                  <span className="font-mono text-white">$4,950</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影布幕</span>
-                  <span className="font-mono text-white">$8,800</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300">
-                  <span className="flex items-center gap-2"><span> </span> HDMI線組</span>
-                  <span className="font-mono text-white">$3,608</span>
-                </li>
-                <li className="flex justify-between items-center text-gray-300 mt-4 pt-2 border-t border-white/5">
-                  <span className="flex items-center gap-2 text-purple-400">LED 大螢幕 / 燈條</span>
-                  <span className="text-sm text-gray-500">客製化報價</span>
-                </li>
-              </ul>
-            </div>
+                {/* Column 3: Visual Output */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="space-y-4"
+                >
+                  <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">視覺輸出設備</h4>
+                  <ul className="space-y-3">
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機</span>
+                      <span className="font-mono text-white">$91,850</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影機吊架</span>
+                      <span className="font-mono text-white">$4,950</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span className="text-green-500">◉</span> 投影布幕</span>
+                      <span className="font-mono text-white">$8,800</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300">
+                      <span className="flex items-center gap-2"><span> </span> HDMI線組</span>
+                      <span className="font-mono text-white">$3,608</span>
+                    </li>
+                    <li className="flex justify-between items-center text-gray-300 mt-4 pt-2 border-t border-white/5">
+                      <span className="flex items-center gap-2 text-purple-400">LED 大螢幕 / 燈條</span>
+                      <span className="text-sm text-gray-500">客製化報價</span>
+                    </li>
+                  </ul>
+                </motion.div>
+              </>
+            )}
+          </div>
+
+          <div className="flex justify-center mb-12 relative z-10">
+            <button
+              onClick={() => setIsHardwareExpanded(!isHardwareExpanded)}
+              className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors font-medium bg-white/5 px-6 py-2 rounded-full border border-white/10 hover:bg-white/10"
+            >
+              {isHardwareExpanded ? (
+                <>收起選配清單 <ChevronUp size={18} /></>
+              ) : (
+                <>查看完整選配設備 <ChevronDown size={18} /></>
+              )}
+            </button>
           </div>
 
           {/* 滿額回饋區塊 - 移入此處 */}
