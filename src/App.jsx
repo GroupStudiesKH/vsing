@@ -86,13 +86,13 @@ const Navbar = () => {
 
 const ExplosiveBackground = () => {
   const beams = React.useMemo(() => {
-    return Array.from({ length: 60 }).map((_, i) => ({
+    return Array.from({ length: 100 }).map((_, i) => ({
       id: i,
       rotation: `${Math.random() * 360}deg`,
-      duration: `${Math.random() * 1 + 0.2}s`, // Much faster for explosive effect
+      duration: `${Math.random() * 1 + 0.5}s`, // Much faster for explosive effect
       delay: `${Math.random() * 2}s`,
       width: `${Math.random() * 4 + 1}px`,
-      color: Math.random() > 0.3 ? '#a855f7' : '#ec4899', // More purple dominance
+      color: ['#a855f7', '#ec4899', '#ef4444', '#3b82f6'][Math.floor(Math.random() * 4)],
       length: `${Math.random() * 60 + 40}vh`,
       opacity: Math.random() * 0.5 + 0.5
     }));
