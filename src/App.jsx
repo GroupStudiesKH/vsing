@@ -101,22 +101,32 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-bold text-white mb-10"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+          className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tight"
         >
-          <div className="mb-6">打造你的高光時刻</div>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            讓舞台發光，也讓營收提高！
-          </span>
+          <div className="mb-4 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">零成本開店</div>
+          <motion.div
+            animate={{
+              textShadow: [
+                "0 0 10px #a855f7",
+                "0 0 20px #a855f7",
+                "0 0 10px #a855f7"
+              ]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 pb-2"
+          >
+            營收翻倍的武器
+          </motion.div>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed font-medium"
         >
           VSING 是一套將現場表演變現的互動系統，<br />為您的場域注入全新生命力。
         </motion.p>
@@ -370,32 +380,28 @@ const HowToStart = () => {
           <p className="mt-4 text-xl text-gray-400">門檻更低、選擇更自由，打造最適合您的娛樂場域</p>
         </div>
 
-        {/* 1. 方案背景與目的 & 2. 系統租賃與分潤機制 */}
+        {/* 1. 方案特色 - 重新設計 */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-zinc-800 to-black p-8 rounded-2xl border border-zinc-700"
+            className="bg-gradient-to-br from-zinc-800 to-black p-8 rounded-2xl border border-zinc-700 h-full"
           >
-            <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <Globe className="text-purple-500" />
-              方案特色
+              彈性導入，輕鬆啟動
             </h3>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              專為台灣市場打造的彈性導入方案，打破傳統套餐限制，將原有的馬來西亞模式轉化為更具彈性的「選配模組化」制度。
-              透過降低系統入門門檻與採購滿額激勵，讓各類餐飲、娛樂場所都能輕鬆導入 VSING 系統，創造最大收益。
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="bg-purple-900/30 p-4 rounded-xl border border-purple-500/30 flex-1 text-center">
-                <p className="text-gray-400 text-sm mb-1">系統月租費</p>
-                <p className="text-2xl font-bold text-white">NT$ 4,000<span className="text-sm font-normal text-gray-400"> / 月</span></p>
-                <p className="text-xs text-gray-500 mt-1">合約期：1年</p>
+
+            <div className="space-y-6">
+              <div className="bg-zinc-900/50 p-4 rounded-xl border-l-4 border-purple-500 hover:bg-zinc-900 transition-colors">
+                <h4 className="text-lg font-bold text-white mb-2">已有設備？零硬體成本！</h4>
+                <p className="text-gray-400">若您店內已有適合的電腦與影音設備，完全無需購買新硬體。只需支付軟體月租，即可立即導入 VSING 系統。</p>
               </div>
-              <div className="bg-green-900/30 p-4 rounded-xl border border-green-500/30 flex-1 text-center">
-                <p className="text-gray-400 text-sm mb-1">合作店家分潤</p>
-                <p className="text-2xl font-bold text-green-400">20%</p>
-                <p className="text-xs text-gray-500 mt-1">系統營收共享</p>
+
+              <div className="bg-zinc-900/50 p-4 rounded-xl border-l-4 border-green-500 hover:bg-zinc-900 transition-colors">
+                <h4 className="text-lg font-bold text-white mb-2">需要設備？實惠選配！</h4>
+                <p className="text-gray-400">我們提供優於市價的專業特效設備供您選配。不強迫購買，旨在協助您以最划算的預算升級場域氛圍。</p>
               </div>
             </div>
           </motion.div>
@@ -404,53 +410,36 @@ const HowToStart = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-zinc-800/50 p-8 rounded-2xl border border-zinc-700"
+            className="bg-zinc-800/50 p-8 rounded-2xl border border-zinc-700 flex flex-col justify-center h-full"
           >
-            <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <Gift className="text-pink-500" />
-              硬體採購滿額回饋
-            </h3>
-            <p className="text-gray-400 mb-6">為了鼓勵店家建置更完整的娛樂設備，特設「採購折抵租金」回饋方案：</p>
+            <div className="flex flex-col sm:flex-row gap-4 h-full">
+              <div className="bg-purple-900/20 p-6 rounded-xl border border-purple-500/30 flex-1 flex flex-col justify-center text-center hover:bg-purple-900/30 transition-colors group">
+                <div className="mb-4 mx-auto w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+                  <DollarSign size={24} />
+                </div>
+                <p className="text-gray-400 text-sm mb-2">軟體系統月租</p>
+                <p className="text-3xl font-bold text-white mb-1">NT$ 4,000</p>
+                <p className="text-sm text-gray-500">/ 月 (年約)</p>
+              </div>
 
-            <div className="space-y-4">
-              <div className="flex items-center justify-between bg-zinc-900 p-4 rounded-xl border border-zinc-800">
-                <div>
-                  <p className="text-purple-400 font-bold">入門推廣</p>
-                  <p className="text-sm text-gray-400">採購滿 NT$ 100,000</p>
+              <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30 flex-1 flex flex-col justify-center text-center hover:bg-green-900/30 transition-colors group">
+                <div className="mb-4 mx-auto w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 group-hover:scale-110 transition-transform">
+                  <Users size={24} />
                 </div>
-                <div className="text-right">
-                  <p className="text-white font-bold">贈送 3 個月</p>
-                  <p className="text-xs text-green-400">省下 NT$ 12,000</p>
-                </div>
-              </div>
-              <div className="flex items-center justify-between bg-zinc-900 p-4 rounded-xl border border-zinc-800">
-                <div>
-                  <p className="text-purple-400 font-bold">專業進階</p>
-                  <p className="text-sm text-gray-400">採購滿 NT$ 250,000</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-white font-bold">贈送 6 個月</p>
-                  <p className="text-xs text-green-400">省下 NT$ 24,000</p>
-                </div>
-              </div>
-              <div className="flex items-center justify-between bg-gradient-to-r from-purple-900/40 to-pink-900/40 p-4 rounded-xl border border-purple-500/30">
-                <div>
-                  <p className="text-pink-400 font-bold">旗艦全面</p>
-                  <p className="text-sm text-gray-300">採購滿 NT$ 400,000</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-white font-bold">贈送 12 個月</p>
-                  <p className="text-xs text-green-400">省下 NT$ 48,000</p>
-                </div>
+                <p className="text-gray-400 text-sm mb-2">合作店家分潤</p>
+                <p className="text-3xl font-bold text-green-400 mb-1">20%</p>
+                <p className="text-sm text-gray-500">系統營收共享</p>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* 3. 硬體設備選配方案 */}
-        <div className="bg-black/40 rounded-3xl p-8 border border-white/10">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-white mb-2">硬體設備選配方案 (Modular Selection)</h3>
+        {/* 2. 硬體設備選配方案 (包含滿額回饋) */}
+        <div className="bg-black/40 rounded-3xl p-8 border border-white/10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+          <div className="text-center mb-10 relative z-10">
+            <h3 className="text-2xl font-bold text-white mb-2">硬體設備選配方案</h3>
             <p className="text-gray-400">由店家依現場環境自由挑選，打造獨一無二的氛圍</p>
             <div className="flex justify-center gap-6 mt-4 text-sm">
               <span className="flex items-center gap-1"><span className="text-purple-500">◈</span> 配合系統必選</span>
@@ -458,7 +447,7 @@ const HowToStart = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 relative z-10 mb-12">
             {/* Column 1: Core System */}
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-white border-b border-white/10 pb-2">核心基礎設備</h4>
@@ -537,12 +526,47 @@ const HowToStart = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-500">
-              * 價格僅供參考，實際報價依現場需求與施工難度而定。<br />
-              * 建議選配項目可視店內既有設備及需求刪減。
-            </p>
+          {/* 滿額回饋區塊 - 移入此處 */}
+          <div className="relative z-10 bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-2xl p-8 border border-zinc-700">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="md:w-1/3">
+                <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                  <Gift className="text-pink-500" />
+                  硬體採購滿額回饋
+                </h3>
+                <p className="text-gray-400">為了鼓勵店家建置更完整的娛樂設備，特設「採購折抵租金」回饋方案。</p>
+              </div>
+
+              <div className="md:w-2/3 grid sm:grid-cols-3 gap-4 w-full">
+                <div className="bg-black/50 p-4 rounded-xl border border-zinc-700 text-center hover:border-purple-500/50 transition-colors">
+                  <p className="text-purple-400 font-bold mb-1">入門推廣</p>
+                  <p className="text-xs text-gray-400 mb-2">滿 NT$ 100,000</p>
+                  <p className="text-white font-bold">贈 3 個月</p>
+                  <p className="text-xs text-green-400">省 NT$ 12,000</p>
+                </div>
+                <div className="bg-black/50 p-4 rounded-xl border border-zinc-700 text-center hover:border-purple-500/50 transition-colors">
+                  <p className="text-purple-400 font-bold mb-1">專業進階</p>
+                  <p className="text-xs text-gray-400 mb-2">滿 NT$ 250,000</p>
+                  <p className="text-white font-bold">贈 6 個月</p>
+                  <p className="text-xs text-green-400">省 NT$ 24,000</p>
+                </div>
+                <div className="bg-gradient-to-b from-purple-900/30 to-pink-900/30 p-4 rounded-xl border border-purple-500/30 text-center relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-white/5 animate-pulse group-hover:bg-white/10 transition-colors"></div>
+                  <p className="text-pink-400 font-bold mb-1 relative z-10">旗艦全面</p>
+                  <p className="text-xs text-gray-300 mb-2 relative z-10">滿 NT$ 400,000</p>
+                  <p className="text-white font-bold relative z-10">贈 12 個月</p>
+                  <p className="text-xs text-green-400 relative z-10">省 NT$ 48,000</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 text-center border-t border-white/5 pt-4">
+              <p className="text-sm text-gray-500">
+                * 價格僅供參考，實際報價依現場需求與施工難度而定。<br />
+                * 建議選配項目可視店內既有設備及需求刪減。
+              </p>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
