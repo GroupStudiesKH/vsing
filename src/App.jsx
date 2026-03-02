@@ -101,23 +101,39 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            type: "spring",
+            stiffness: 200,
+            damping: 15
+          }}
           className="text-4xl md:text-6xl font-bold text-white mb-10 relative z-10 leading-tight"
         >
-          <motion.div
-            animate={{
-              boxShadow: ["0 0 20px rgba(147,51,234,0.3)", "0 0 60px rgba(147,51,234,0.6)", "0 0 20px rgba(147,51,234,0.3)"],
-              borderColor: ["rgba(255,255,255,0.1)", "rgba(168,85,247,0.5)", "rgba(255,255,255,0.1)"]
-            }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="inline-block bg-black/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/10"
-          >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 drop-shadow-sm">
-              零成本開店、<br className="md:hidden" />營收翻倍的武器
-            </span>
-          </motion.div>
+          <div className="relative inline-block group">
+            {/* 爆炸擴散波紋效果 - 背後層 */}
+            <div className="absolute inset-0 bg-purple-600 rounded-2xl blur-xl opacity-40 animate-pulse-ring -z-10"></div>
+            <div className="absolute inset-0 bg-pink-600 rounded-2xl blur-2xl opacity-30 animate-pulse-ring delay-75 -z-10" style={{ animationDelay: '0.5s' }}></div>
+
+            <motion.div
+              animate={{
+                boxShadow: [
+                  "0 0 20px rgba(147,51,234,0.4)",
+                  "0 0 50px rgba(236,72,153,0.6)",
+                  "0 0 20px rgba(147,51,234,0.4)"
+                ],
+                scale: [1, 1.03, 1],
+                borderColor: ["rgba(168,85,247,0.3)", "rgba(236,72,153,0.6)", "rgba(168,85,247,0.3)"]
+              }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="relative bg-black/70 backdrop-blur-xl px-8 py-6 rounded-2xl border-2"
+            >
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 animate-text-shimmer drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">
+                零成本開店、<br className="md:hidden" />營收翻倍的武器
+              </span>
+            </motion.div>
+          </div>
         </motion.h1>
 
         <motion.p
