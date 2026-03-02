@@ -4,7 +4,6 @@ import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, St
 
 // Import images
 import logo from './assets/img/vsing_logo.webp';
-import bg1 from './assets/img/bg1.webp';
 import illustration2 from './assets/img/illustration2.webp';
 import revenue from './assets/img/revenue.webp';
 import globalVision from './assets/img/vsing_global_vision.webp';
@@ -85,21 +84,75 @@ const Navbar = () => {
   );
 };
 
-const Hero = () => {
+const ExplosiveBackground = () => {
+  const beams = React.useMemo(() => {
+    return Array.from({ length: 60 }).map((_, i) => ({
+      id: i,
+      rotation: `${Math.random() * 360}deg`,
+      duration: `${Math.random() * 1 + 0.2}s`, // Much faster for explosive effect
+      delay: `${Math.random() * 2}s`,
+      width: `${Math.random() * 4 + 1}px`,
+      color: Math.random() > 0.3 ? '#a855f7' : '#ec4899', // More purple dominance
+      length: `${Math.random() * 60 + 40}vh`,
+      opacity: Math.random() * 0.5 + 0.5
+    }));
+  }, []);
+
   return (
-    <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${bg1})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
+    <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center bg-black">
+      {/* Dynamic Background Gradient - Pulsing and Rotating */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/40 via-black to-black animate-pulse-bg z-0"></div>
+
+      {/* Rotating Nebulas/Glows for "Black and Purple Interlaced" effect */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg_at_50%_50%,#000000_0deg,#581c87_60deg,#000000_120deg,#7e22ce_180deg,#000000_240deg,#4c1d95_300deg,#000000_360deg)] opacity-20 animate-spin-slow mix-blend-screen"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Central Core Explosion */}
+      <div className="absolute w-64 h-64 bg-purple-600/20 rounded-full blur-[80px] animate-pulse-core z-0 mix-blend-screen"></div>
+      <div className="absolute w-32 h-32 bg-white/30 rounded-full blur-[40px] animate-pulse-core z-0 mix-blend-overlay"></div>
+
+      {/* Explosive Beams */}
+      <div className="relative w-full h-full z-10">
+        {beams.map((beam) => (
+          <div
+            key={beam.id}
+            className="absolute left-1/2 top-1/2 origin-top rounded-full animate-beam-fire"
+            style={{
+              '--rotation': beam.rotation,
+              '--duration': beam.duration,
+              '--delay': beam.delay,
+              width: beam.width,
+              height: beam.length,
+              background: `linear-gradient(to bottom, transparent, ${beam.color}, transparent)`,
+              opacity: 0,
+              boxShadow: `0 0 10px ${beam.color}`, // Glow effect for beams
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Shockwaves - Multiple layers for depth */}
+      <div className="absolute inset-0 flex items-center justify-center z-0">
+        <div className="w-[10vw] h-[10vw] border-2 border-purple-500/50 rounded-full animate-shockwave" style={{ animationDuration: '2s', animationDelay: '0s' }}></div>
+        <div className="w-[30vw] h-[30vw] border border-pink-500/30 rounded-full animate-shockwave" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}></div>
+        <div className="w-[60vw] h-[60vw] border border-purple-800/20 rounded-full animate-shockwave" style={{ animationDuration: '3s', animationDelay: '1s' }}></div>
+      </div>
+
+      {/* Overlay Gradient for content readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-60 z-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#000000_80%)] opacity-80 z-20" />
+    </div>
+  );
+};
+
+const Hero = () => {
+  return (
+    <div className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Background Effects */}
+      <ExplosiveBackground />
+
+      <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

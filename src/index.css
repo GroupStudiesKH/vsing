@@ -26,3 +26,85 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-meteor-effect {
+  animation: meteor 5s linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes beam-fire {
+  0% {
+    transform: rotate(var(--rotation)) translateY(0) scaleY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--rotation)) translateY(100vh) scaleY(2);
+    opacity: 0;
+  }
+}
+
+.animate-beam-fire {
+  animation: beam-fire var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes pulse-core {
+  0%, 100% { transform: scale(1); opacity: 0.5; box-shadow: 0 0 50px 20px rgba(168, 85, 247, 0.3); }
+  50% { transform: scale(1.5); opacity: 0.8; box-shadow: 0 0 100px 50px rgba(236, 72, 153, 0.5); }
+}
+
+.animate-pulse-core {
+  animation: pulse-core 4s ease-in-out infinite;
+}
+
+@keyframes shockwave {
+  0% { transform: scale(0); opacity: 1; border-width: 2px; }
+  100% { transform: scale(4); opacity: 0; border-width: 0; }
+}
+
+.animate-shockwave {
+  animation: shockwave 3s ease-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes pulse-bg {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-bg {
+  animation: pulse-bg 4s ease-in-out infinite;
+}
