@@ -148,50 +148,68 @@ const ExplosiveBackground = () => {
 
 const Hero = () => {
   return (
-    <div className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
       {/* Background Effects */}
       <ExplosiveBackground />
 
-      <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center">
+        {/* Top Tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-purple-400 font-bold tracking-[0.2em] text-lg md:text-xl mb-4 uppercase"
+        >
+          導入零成本 現在是最划算的時機
+        </motion.div>
+
+        {/* Main Title: JOIN NOW! */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-          className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tight"
+          className="text-7xl md:text-9xl font-black text-white mb-8 tracking-tighter"
         >
-          <div className="mb-4">零成本開店</div>
-          <div className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 pb-2">
-            營收翻倍的武器
-          </div>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 filter drop-shadow-[0_0_25px_rgba(236,72,153,0.5)]">
+            JOIN NOW!
+          </span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed font-medium"
-        >
-          VSING 是一套將現場變現的互動系統，<br />為您的營業場域注入全新生命力。
-        </motion.p>
-
+        {/* Subtitle Pill */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="inline-block bg-white/10 backdrop-blur-md rounded-full px-8 py-3 mb-12 border border-white/20 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
         >
-          <a
-            href="#contact"
-            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-purple-500/30"
-          >
-            立即預約諮詢
-          </a>
-          <a
-            href="#about"
-            className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all"
-          >
-            了解更多
-          </a>
+          <span className="text-lg md:text-2xl text-white font-medium tracking-wide">
+            VSING 是一套將場域營收倍增的互動系統
+          </span>
+        </motion.div>
+
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex flex-col items-center w-full mt-12"
+        >
+          <div className="flex flex-col sm:flex-row gap-6 justify-center w-full max-w-md sm:max-w-none mb-8">
+            <a
+              href="#contact"
+              className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-full text-xl font-black hover:from-purple-500 hover:to-pink-500 transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] flex items-center justify-center gap-3 transform hover:-translate-y-1"
+            >
+              <Play className="fill-current w-6 h-6 group-hover:scale-110 transition-transform" />
+              立即加入
+            </a>
+            <a
+              href="#about"
+              className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-10 py-5 rounded-full text-lg font-bold hover:bg-white/10 transition-all hover:border-white/40 flex items-center justify-center"
+            >
+              了解更多
+            </a>
+          </div>
         </motion.div>
       </div>
     </div>
