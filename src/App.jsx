@@ -435,7 +435,7 @@ const HowToStart = () => {
   const [isHardwareExpanded, setIsHardwareExpanded] = useState(false);
 
   return (
-    <section id="start" className="py-20 bg-zinc-900">
+    <section id="start" className="py-20 bg-zinc-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">台灣專屬・模組化導入方案</h2>
@@ -728,7 +728,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-black relative">
+    <section id="contact" className="py-20 bg-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-16">
           <div>
