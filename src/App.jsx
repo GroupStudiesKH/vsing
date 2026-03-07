@@ -4,11 +4,11 @@ import { Menu, X, Music, DollarSign, Users, Globe, Phone, Mail, MapPin, Play, St
 
 // Import images
 import logo from './assets/img/vsing_logo.webp';
-import illustration2 from './assets/img/illustration2.webp';
-import revenue from './assets/img/revenue.webp';
 import globalVision from './assets/img/vsing_global_vision.webp';
 import karakaraCase1 from './assets/img/karakara_case1.webp';
 import karakaraCase3 from './assets/img/karakara_case3.webp';
+import onerule1 from './assets/img/onerule1.webp';
+import onerule2 from './assets/img/onerule2.webp';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -183,7 +183,7 @@ const Hero = () => {
           className="inline-block bg-white/10 backdrop-blur-md rounded-full px-8 py-3 mb-12 border border-white/20 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
         >
           <span className="text-lg md:text-2xl text-white font-medium tracking-wide">
-            VSING 是一套將場域營收倍增的互動系統
+            VSING 全方位提升你的營業額
           </span>
         </motion.div>
 
@@ -233,7 +233,7 @@ const About = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <img src={illustration2} alt="VSING Concept" className="rounded-2xl shadow-2xl h-64 w-full object-cover" />
+            <img src={karakaraCase1} alt="VSING Concept" className="rounded-2xl shadow-2xl h-64 w-full object-cover" />
             <div className="absolute -bottom-6 -right-6 bg-zinc-800 p-4 rounded-xl shadow-xl border border-zinc-700">
               <div className="flex items-center gap-3">
                 <Music className="text-pink-500" size={32} />
@@ -399,7 +399,7 @@ const ProfitModel = () => {
             viewport={{ once: true }}
             className="bg-black p-4 rounded-2xl"
           >
-            <img src={revenue} alt="Revenue Chart" className="w-full rounded-xl h-64 object-cover" />
+            <img src={karakaraCase3} alt="Revenue Chart" className="w-full rounded-xl h-64 object-cover" />
           </motion.div>
         </div>
       </div>
@@ -747,8 +747,8 @@ const Contact = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <img src={karakaraCase1} alt="ONE KARA" className="rounded-lg opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={karakaraCase3} alt="ONE KARA" className="rounded-lg opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={onerule1} alt="ONE KARA" className="rounded-lg h-44 w-full object-cover" />
+                <img src={onerule2} alt="ONE KARA" className="rounded-lg h-44 w-full object-cover" />
               </div>
 
               <div id="contact-form">
